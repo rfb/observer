@@ -1,0 +1,40 @@
+version: "2"
+
+volumes:
+  dbdata:
+  dbsocket:
+  ob_media:
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      OB_DB_USER: observer
+      OB_DB_PASS: observer
+      OB_DB_NAME: observer
+      OB_DB_HOST: db
+      OB_HASH_SALT: agoodone
+      OB_MEDIA: /volumes/media
+      OB_ASSETS: /volumes/assets
+      OB_MEDIA_UPLOADS: /volumes/uploads
+      OB_MEDIA_ARCHIVE: /volumes/archive
+      OB_THUMBNAILS: /volumes/thumbnails
+      OB_CACHE: /volumes/cache
+      OB_SITE: http://web
+      OB_EMAIL_REPLY: rfb@skyscraper.nu
+      OB_EMAIL_FROM: OBServer
+    volumes:
+      - ob_media:/volumes/
+  db:
+    image: mariadb:latest
+    environment:
+      MARIADB_DATABASE: observer
+      MARIADB_USER: observer
+      MARIADB_PASSWORD: observer
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+    volumes:
+      - dbsocket:/run/mysqld/
+      - dbdata:/var/lib/mysql/
+

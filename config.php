@@ -27,8 +27,8 @@ define('OB_EMAIL_FROM', getenv('OB_EMAIL_FROM')); // emails to users come from t
 // THE FOLLOWING ARE OPTIONAL SETTINGS
 //
 
-// define('OB_UPDATES_USER', 'updates'); // username/password for updates area
-// define('OB_UPDATES_PW', 'PASSWORD_HASH'); // get password hash with: php -r "echo password_hash('password',PASSWORD_DEFAULT).\"\n\";"
+define('OB_UPDATES_USER', 'updates'); // username/password for updates area
+define('OB_UPDATES_PW', 'PASSWORD_HASH'); // get password hash with: php -r "echo password_hash('password',PASSWORD_DEFAULT).\"\n\";"
 
 // custom SMTP server (all must be defined)
 // define('OB_EMAIL_HOST', 'hostname');
@@ -50,7 +50,7 @@ define('OB_EMAIL_FROM', getenv('OB_EMAIL_FROM')); // emails to users come from t
 // define('OB_MEDIA_VERSIONS','/where/to/put/media/versions');
 
 // set a custom assets directory (required for multisite installations)
-// define('OB_ASSETS','/where/to/put/assets');
+define('OB_ASSETS','/volumes/assets');
 
 // disable language/translation demos (translated using Google Translate, will contain many errors)
 // define('OB_DISABLE_LANGUAGE_DEMOS',TRUE);
